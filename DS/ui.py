@@ -135,12 +135,12 @@ def get_theme_css():
         padding: 0 20px !important;
         box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
     }}
-    .header-title {{ color: {TITLE} !important; font-size: 19px !important; font-weight: 800 !important; white-space: nowrap !important; }}
+    .header-title {{ color: {TITLE} !important; font-size: 16px !important; font-weight: 800 !important; white-space: nowrap !important; }}
     .status-nav {{ display: flex; gap: 5px; flex: 1; justify-content: flex-end; margin-right: 12px; overflow: hidden; }}
     .status-item {{ display: inline-flex; gap: 3px; font-size: 12px; padding: 3px 8px; border-radius: 5px; background: transparent; border: 1px solid {BORDER}; align-items: center; white-space: nowrap; color: {WARM}; }}
     .status-label {{ color: {TITLE}; font-size: 11px; font-weight: bold; }}
     .status-value {{ color: {WARM}; font-size: 12px; font-weight: bold; }}
-    .header-deploy-area {{ display: flex; gap: 9px; flex-shrink: 0; }}
+    .header-deploy-area {{ display: flex; gap: 8px; flex-shrink: 0; }}
     .deploy-btn, .theme-btn {{ background: transparent !important; color: {TITLE} !important; border: 1px solid {BORDER} !important; border-radius: 5px !important; padding: 4px 12px !important; font-size: 17px !important; font-weight: bold !important; cursor: pointer !important; font-family: 'Microsoft YaHei', sans-serif !important; }}
     .deploy-btn:hover, .theme-btn:hover {{ background: rgba(78,201,192,0.15) !important; }}
 
@@ -170,7 +170,7 @@ def get_theme_css():
     /* ========== 部署/主题按钮：白色18px不加粗渐变绿，间距缩小10% ========== */
     section[data-testid="stSidebar"] .sidebar-top-btns-wrapper {{
         display: flex !important;
-        gap: 7px !important;
+        gap: 6px !important;
         margin-bottom: 10px !important;
     }}
     section[data-testid="stSidebar"] .sidebar-top-btns-wrapper > div {{ width: 100% !important; }}
@@ -275,17 +275,17 @@ def get_theme_css():
         line-height: 1.5 !important;
     }}
 
-    /* ========== 控制面板图标调大35%（26px → 35px） ========== */
+    /* ========== 控制面板图标调大20%（49px） ========== */
     section[data-testid="stSidebar"] .control-btn-style [data-testid="stButton"] > button,
     section[data-testid="stSidebar"] .control-btn-style button,
     section[data-testid="stSidebar"] .control-btn-style button p {{
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        width: 41px !important;
-        height: 41px !important;
+        width: 49px !important;
+        height: 49px !important;
         color: {TEXT} !important;
-        font-size: 37px !important;
+        font-size: 44px !important;
         padding: 2px !important;
         margin: 0 !important;
         line-height: 1 !important;
@@ -301,12 +301,20 @@ def get_theme_css():
         transform: none !important;
     }}
 
-    /* ========== 语音控制：自适应一行，字体缩小 ========== */
+    /* ========== 语音控制：自适应一行，字体缩小，垂直对齐 ========== */
     section[data-testid="stSidebar"] .voice-control-wrapper [data-testid="stButton"] > button {{
         font-size: 11px !important;
         padding: 4px 6px !important;
         white-space: nowrap !important;
-        margin-top: 12px !important;
+        margin-top: 16px !important;
+        vertical-align: bottom !important;
+        display: inline-flex !important;
+        align-items: flex-end !important;
+    }}
+    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox {{
+        margin-top: 16px !important;
+        display: inline-flex !important;
+        align-items: flex-end !important;
     }}
     section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox label p,
     section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox label span {{
@@ -314,16 +322,16 @@ def get_theme_css():
         color: {WARM} !important;
         white-space: nowrap !important;
     }}
-    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox {{ margin: 0 !important; }}
+    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox {{ margin: 0 !important; margin-top: 16px !important; }}
 
-    /* ========== 文件上传：青灰色，去除白框背景 ========== */
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] {{
+    /* ========== 文件上传：青灰色，去除白框背景，全覆盖 ========== */
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"],
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] > div,
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] > div > div,
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] > div > div > div {{
         background: transparent !important;
         border: 1px solid {BORDER} !important;
         border-radius: 6px !important;
-    }}
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] > div > div {{
-        background: transparent !important;
     }}
     section[data-testid="stSidebar"] [data-testid="stFileUploader"] span,
     section[data-testid="stSidebar"] [data-testid="stFileUploader"] button,
@@ -339,8 +347,13 @@ def get_theme_css():
     section[data-testid="stSidebar"] [data-testid="stFileUploader"] button {{
         background: transparent !important;
         border: 1px solid {BORDER} !important;
-        color: {TITLE} !important;
+        color: #5F9EA0 !important;
         border-radius: 4px !important;
+    }}
+    /* 拖拽区域虚线框内文字也改为青灰色 */
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"],
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"] * {{
+        color: #5F9EA0 !important;
     }}
 
     /* ========== 侧边栏全局内容字体（按钮除外） ========== */
@@ -357,13 +370,12 @@ def get_theme_css():
     }}
 
     /* ========== 右侧对话标题行 fixed 置顶（在 header 下方） ========== */
-    /* 对话标题栏容器：fixed 置顶 */
     .st-key-dialogue_title_bar {{
         position: fixed !important;
-        top: 75px !important;
+        top: 85px !important;
         left: 265px !important;
         right: 0 !important;
-        height: 39px !important;
+        height: 43px !important;
         z-index: 99999 !important;
         background: {BG} !important;
         border-bottom: 1px solid {BORDER} !important;
@@ -375,7 +387,7 @@ def get_theme_css():
     .st-key-dialogue_title_bar .stColumn {{
         display: flex !important;
         align-items: center !important;
-        height: 39px !important;
+        height: 43px !important;
         overflow: hidden !important;
     }}
     /* 走马灯容器 */
@@ -385,51 +397,36 @@ def get_theme_css():
         white-space: nowrap !important;
         display: flex !important;
         align-items: center !important;
-        height: 39px !important;
+        height: 43px !important;
         position: relative !important;
         padding-left: 5px !important;
     }}
-
-    /* 对话标题栏容器：fixed 置顶 */
-    .st-key-dialogue_title_bar {{
-        position: fixed !important;
-        top: 75px !important;
-        left: 265px !important;
-        right: 0 !important;
-        height: 39px !important;
-        z-index: 99999 !important;
-        background: {BG} !important;
-        border-bottom: 1px solid {BORDER} !important;
-        padding: 0 12px !important;
-        display: flex !important;
-        align-items: center !important;
-        box-sizing: border-box !important;
-    }}
-    /* 删除选中按钮 */
+    /* 删除选中按钮：右移10px + 字体图标缩小15% */
     .st-key-dialogue_title_bar [data-testid="stButton"] > button,
     .st-key-dialogue_title_bar button {{
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
         color: {TITLE} !important;
-        font-size: 14px !important;
+        font-size: 12px !important;
         font-weight: bold !important;
         padding: 2px 6px !important;
         min-height: unset !important;
         height: auto !important;
         line-height: 1 !important;
         width: auto !important;
-        margin: 0 !important;
+        margin-right: 20px !important;
         white-space: nowrap !important;
     }}
+    .st-key-dialogue_title_bar [data-testid="stButton"] > button:hover,
     .dialogue-title-bar-wrapper [data-testid="stButton"] > button:hover {{
         background: rgba(78,201,192,0.1) !important;
     }}
 
-    /* ========== 主内容区：顶部留出固定栏空间（73px header + 39px title bar + 10px buffer） ========== */
+    /* ========== 主内容区：顶部留出固定栏空间（73px header + 43px title bar + 10px buffer） ========== */
     .main .block-container,
     [data-testid="stAppViewContainer"] .main .block-container {{
-        padding-top: 122px !important;
+        padding-top: 126px !important;
         padding-left: 275px !important;
         padding-right: 20px !important;
         background: {BG} !important;
@@ -448,9 +445,12 @@ def get_theme_css():
         border: 1px solid {BORDER} !important;
         border-radius: 10px !important;
         padding: 10px 14px !important;
-        margin-bottom: 2px !important;
+        margin-bottom: 1px !important;
         background: {CARD} !important;
         margin-right: 0 !important;
+    }}
+    .stChatMessage + .stChatMessage {{
+        margin-top: -4px !important;
     }}
     .stChatMessage p, .stChatMessage span:not([data-testid="stChatMessageAvatar"]), .stChatMessage div, .stChatMessage li, .stChatMessage code {{
         color: {TEXT} !important;
@@ -485,7 +485,7 @@ def get_theme_css():
         font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", emoji !important;
     }}
 
-    /* ========== 复制/修改按钮：紧跟消息底部5px，必须可见可点 ========== */
+    /* ========== 复制/修改按钮：固定于对话框下沿5px处 ========== */
     .msg-action-bar {{
         display: flex !important;
         flex-direction: row !important;
@@ -495,7 +495,7 @@ def get_theme_css():
         height: 24px !important;
         margin-top: 5px !important;
         padding: 0 4px !important;
-        border-top: 1px solid rgba(255,255,255,0.06) !important;
+        position: relative !important;
     }}
     .msg-action-bar .oc-action-btn {{
         background: transparent !important;
@@ -527,12 +527,24 @@ def get_theme_css():
         border: 1px solid {BORDER} !important;
         border-radius: 4px !important;
     }}
+    /* 让 stChatMessage 相对定位，按钮绝对定位到下沿 */
+    .stChatMessage {{
+        position: relative !important;
+    }}
+    .stChatMessage + div:has(.msg-action-bar) {{
+        position: absolute !important;
+        bottom: 5px !important;
+        right: 14px !important;
+        margin: 0 !important;
+    }}
 
-    /* ========== 输入框外框透明 + 内框下移 ========== */
+    /* ========== 输入框外框透明 + 内框下移10px ========== */
     [data-testid="stChatInput"] {{
         border-top: 1px solid {BORDER} !important;
-        margin-top: 35px !important;
+        margin-top: 45px !important;
         background: transparent !important;
+        position: relative !important;
+        z-index: 99998 !important;
     }}
     [data-testid="stChatInput"] > div,
     [data-testid="stChatInput"] > div > div,
@@ -555,8 +567,8 @@ def get_theme_css():
         border-radius: 4px !important;
         box-shadow: none !important;
         background: transparent !important;
-        min-height: 51px !important;
-        max-height: 150px !important;
+        min-height: 76px !important;
+        max-height: 200px !important;
         overflow-y: auto !important;
         margin-top: 40px !important;
     }}
@@ -626,31 +638,33 @@ def get_theme_css():
     /* ========== 管理面板区域 ========== */
     .model-main-title {{ font-size: 20px !important; color: {TITLE} !important; }}
     .model-sub-title {{ font-size: 14px !important; color: {TITLE} !important; }}
-    /* 关闭管理面板：字体缩小5%，宽度缩小10%，红色框线 */
+    /* 关闭管理面板：暗黄色，字体缩小5%，宽度缩小10%，红色框线 */
     .mgr-close-panel [data-testid="stButton"] > button,
     .mgr-close-panel button[kind="secondary"],
     .mgr-close-panel button {{
         background: #B8860B !important;
         color: #ffffff !important;
         border: 1px solid red !important;
-        font-size: 11px !important;
+        font-size: 10px !important;
         letter-spacing: 0.8px !important;
         margin-bottom: 3px !important;
         border-radius: 6px !important;
         width: auto !important;
         min-width: unset !important;
+        max-width: 90% !important;
         padding: 3px 7px !important;
-        transform: scale(0.73) !important;
+        transform: scale(0.9) !important;
         transform-origin: left center !important;
     }}
-    /* 模型列表：行间距缩小60%，内容垂直居中 */
+    /* 模型列表：行间距缩小60%，内容垂直居中，图标缩小20% */
     .model-list-row {{
         display: flex !important;
         align-items: center !important;
         min-height: 10px !important;
         line-height: 1 !important;
         margin-bottom: 0px !important;
-        padding: 1px 0 !important;
+        margin-top: 0px !important;
+        padding: 0px 0 !important;
     }}
     .model-list-row div,
     .model-list-row code {{
@@ -681,12 +695,12 @@ def get_theme_css():
     .model-action-btn-compact [data-testid="stButton"] > button,
     .model-action-btn-compact button[kind="secondary"],
     .model-action-btn-compact button {{
-        width: 10px !important;
-        height: 11px !important;
+        width: 8px !important;
+        height: 9px !important;
         background: transparent !important;
         border: none !important;
         color: {TITLE} !important;
-        font-size: 6px !important;
+        font-size: 5px !important;
         padding: 0 !important;
         border-radius: 3px !important;
         display: flex !important;
@@ -707,11 +721,12 @@ def get_theme_css():
     /* 其余区域行间距缩小30% */
     .mgr-form-row {{ margin-bottom: 4px !important; }}
     .mgr-section {{ margin-bottom: 8px !important; }}
-
-    /* ========== 删除选中按钮右移10px + 字体图标缩小15% ========== */
-    .st-key-dialogue_title_bar [data-testid="stButton"] > button {{
-        margin-right: 10px !important;
-        font-size: 12px !important;
+    /* Streamlit stColumn 间距压缩 */
+    .mgr-close-panel [data-testid="stHorizontalBlock"],
+    .model-list-row + [data-testid="stHorizontalBlock"] {{
+        gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }}
 
     /* ========== 代码块独立容器样式 ========== */
