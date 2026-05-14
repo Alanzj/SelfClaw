@@ -975,6 +975,13 @@ def render_sidebar():
         with c2:
             if st.button("🧹", help="新开对话（保留历史）"):
                 st.session_state.display_start_idx = len(st.session_state.messages)
+                # 持久化 display_start_idx，重启后仍隐藏旧对话
+                save_ui_state({
+                    "show_version_panel": st.session_state.get("show_version_panel", False),
+                    "show_plugin_panel": st.session_state.get("show_plugin_panel", False),
+                    "installed_plugins": list(st.session_state.get("just_installed_plugins", set())),
+                    "display_start_idx": st.session_state.display_start_idx
+                })
                 add_operation_log("🗑 对话显示已清空，历史保留", "info")
                 st.rerun()
         with c3:
@@ -1070,14 +1077,17 @@ def render_sidebar():
                 st.markdown('<div class="health-info">扩展目录不存在</div>', unsafe_allow_html=True)
             st.divider()
             missing_plugins, installed_plugins = check_tool_plugins()
-            # 过滤掉本次会话中已安装的插件
-            just_installed = st.session_state.get("just_installed_plugins", set())
+            # 过滤掉本次会话中已安装的插件 + 持久化已安装的插件
+            just_installed = st.session_state.get("just_installed_plugins", set()) | st.session_state.get("installed_plugins_persist", set())
             if just_installed:
-                missing_plugins = [(p, d) for p, d in missing_plugins if p not in just_installed]
-                # 将已安装的补充到installed列表
-                for p, d in missing_plugins[:]:
+                # 先把持久化/已安装的从 missing 移到 installed
+                still_missing = []
+                for p, d in missing_plugins:
                     if p in just_installed:
                         installed_plugins.append((p, d))
+                    else:
+                        still_missing.append((p, d))
+                missing_plugins = still_missing
             if missing_plugins:
                 st.markdown('<div class="health-info">⚠️ 缺失必备工具插件</div>', unsafe_allow_html=True)
                 for pkg_name, desc in missing_plugins:
@@ -1324,8 +1334,20 @@ def render_dialogue():
                     if idx < len(st.session_state.messages):
                         del st.session_state.messages[idx]
                 st.session_state.selected_msg_ids = set()
+                # 重置 display_start_idx 避免索引越界
+                st.session_state.display_start_idx = min(
+                    st.session_state.get("display_start_idx", 0),
+                    len(st.session_state.messages)
+                )
                 # 持久化删除操作到 user_memory.json
                 save_user_memory(st.session_state.messages)
+                # 同步持久化 display_start_idx
+                save_ui_state({
+                    "show_version_panel": st.session_state.get("show_version_panel", False),
+                    "show_plugin_panel": st.session_state.get("show_plugin_panel", False),
+                    "installed_plugins": list(st.session_state.get("just_installed_plugins", set())),
+                    "display_start_idx": st.session_state.display_start_idx
+                })
                 st.rerun()
 
     st.markdown('<div class="chat-scroll-area">', unsafe_allow_html=True)

@@ -60,6 +60,9 @@ if _persisted.get("show_plugin_panel"):
 if _persisted.get("installed_plugins"):
     st.session_state.just_installed_plugins = set(_persisted["installed_plugins"])
     st.session_state.installed_plugins_persist = set(_persisted["installed_plugins"])
+# 恢复 display_start_idx（新开对话的隐藏偏移量）
+if _persisted.get("display_start_idx") is not None:
+    st.session_state.display_start_idx = _persisted["display_start_idx"]
 
 if not st.session_state.selected_model:
     auto = get_auto_models()
