@@ -1,0 +1,166 @@
+{
+  "gateway": "http://127.0.0.1:19999/v1",
+  "providers": {
+    "zenmux": {
+      "baseUrl": "https://zenmux.ai/api/v1",
+      "apiKey": "${ZENMUX_API_KEY}",
+      "proxy": ""
+    },
+    "nvidiaD": {
+      "baseUrl": "https://integrate.api.nvidia.com/v1",
+      "apiKey": "${NVIDIA_API_KEY}",
+      "proxy": ""
+    },
+    "siliconflow": {
+      "baseUrl": "https://api.siliconflow.cn/v1",
+      "apiKey": "${SILICONFLOW_API_KEY}",
+      "proxy": ""
+    },
+    "mistral": {
+      "baseUrl": "https://api.mistral.ai/v1",
+      "apiKey": "${MISTRAL_API_KEY}",
+      "proxy": ""
+    },
+    "zai": {
+      "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
+      "apiKey": "${ZHIPU_API_KEY}",
+      "proxy": ""
+    },
+    "deepseek": {
+      "baseUrl": "https://api.deepseek.com/v1",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "proxy": ""
+    },
+    "kimi": {
+      "baseUrl": "https://api.moonshot.cn/v1",
+      "apiKey": "${KIMI_API_KEY}",
+      "proxy": ""
+    },
+    "xiaomi": {
+      "baseUrl": "https://token-plan-cn.xiaomimimo.com/v1",
+      "apiKey": "${MIMO_API_KEY}",
+      "proxy": ""
+    }
+  },
+  "models_pool": [
+    {
+      "id": "siliconflow:glm-4-9b",
+      "actual": "THUDM/GLM-4-9B-0414",
+      "provider": "siliconflow",
+      "label": "CCR - 硅基 GLM-4-9B",
+      "type": "auto",
+      "order": 1
+    },
+    {
+      "id": "nvidiaD:step-3.5-flash",
+      "actual": "stepfun-ai/step-3.5-flash",
+      "provider": "nvidiaD",
+      "label": "CCR - NVIDIA Step-3.5-Flash（首选稳强）",
+      "type": "auto",
+      "order": 2
+    },
+    {
+      "id": "nvidiaD:deepseek-v4-pro",
+      "label": "CCR - NVIDIA DeepSeek V4 Pro（稳王牌）",
+      "actual": "deepseek-ai/deepseek-v4-pro",
+      "provider": "nvidiaD",
+      "type": "auto",
+      "order": 3
+    },
+    {
+      "id": "nvidiaD:deepseek-v4-flash",
+      "label": "CCR - NVIDIA DeepSeek V4 Flash（稳快）",
+      "actual": "deepseek-ai/deepseek-v4-flash",
+      "provider": "nvidiaD",
+      "type": "auto",
+      "order": 4
+    },
+    {
+      "id": "zenmux:deepseek-v4-pro-free",
+      "label": "CCR - ZenMux Deepseek_V4_Pro（备用王牌）",
+      "actual": "deepseek/deepseek-v4-pro-free",
+      "provider": "zenmux",
+      "type": "auto",
+      "order": 5
+    },
+    {
+      "id": "zenmux:deepseek-v4-flash-free",
+      "label": "CCR - ZenMux Deepseek_V4_Flash（备用快）",
+      "actual": "deepseek/deepseek-v4-flash-free",
+      "provider": "zenmux",
+      "type": "auto",
+      "order": 6
+    },
+    {
+      "id": "siliconflow:deepseek-r1-8b",
+      "actual": "deepseek-ai/DeepSeek-R1-8B",
+      "provider": "siliconflow",
+      "label": "CCR - 硅基 DeepSeek R1 8B",
+      "type": "auto",
+      "order": 7
+    },
+    {
+      "id": "siliconflow:qwen3-8b",
+      "actual": "Qwen/Qwen3-8B",
+      "provider": "siliconflow",
+      "label": "CCR - 硅基 Qwen3 Coder 8B",
+      "type": "auto",
+      "order": 8
+    },
+    {
+      "id": "zai:glm-4.7-flash",
+      "actual": "glm-4.7-flash",
+      "provider": "zai",
+      "label": "CCR - 智谱 GLM-4.7-Flash",
+      "type": "auto",
+      "order": 9
+    },
+    {
+      "id": "mistral:large-latest",
+      "actual": "mistral-large-latest",
+      "provider": "mistral",
+      "label": "CCR - Mistral Large Latest（个人可用）",
+      "type": "auto",
+      "order": 10
+    },
+    {
+      "id": "mistral:small-latest",
+      "actual": "mistral-small-latest",
+      "provider": "mistral",
+      "label": "CCR - Mistral Small Latest（个人可用）",
+      "type": "auto",
+      "order": 11
+    },
+    {
+      "id": "deepseek:v4-flash-paid",
+      "label": "DeepSeek V4 Flash（收费兜底，最低成本）",
+      "actual": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "type": "auto",
+      "order": 13
+    },
+    {
+      "id": "kimi:kimi-k2.6",
+      "actual": "kimi-k2.6",
+      "provider": "kimi",
+      "label": "Kimi K2.6",
+      "type": "manual"
+    },
+    {
+      "id": "xiaomi:mimo-v2.5-pro",
+      "actual": "mimo-v2.5-pro",
+      "provider": "xiaomi",
+      "label": "MiMo V2.5 Pro（小米）",
+      "type": "auto",
+      "order": 14
+    },
+    {
+      "id": "zai:glm-4v-flash",
+      "actual": "glm-4v-flash",
+      "provider": "zai",
+      "label": "GLM-4V-Flash（视觉专用·截图/OCR）",
+      "type": "manual",
+      "order": 15
+    }
+  ]
+}

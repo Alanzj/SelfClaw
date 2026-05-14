@@ -1,0 +1,50 @@
+{
+  "server": {
+    "port": 29999,
+    "host": "127.0.0.1"
+  },
+  "routing": {
+    "rules": [],
+    "defaultProvider": "openclaw",
+    "providers": {
+      "openclaw": {
+        "type": "openai",
+        "endpoint": "http://127.0.0.1:19999/v1",
+        "authentication": {
+          "type": "bearer",
+          "credentials": {
+            "apiKey": "any"
+          }
+        },
+        "settings": {
+          "categoryMappings": {
+            "default": true,
+            "background": true,
+            "thinking": true,
+            "longcontext": true,
+            "search": true
+          }
+        }
+      }
+    }
+  },
+  "models": {
+    "*": {
+      "provider": "openclaw",
+      "model": "${model}"
+    }
+  },
+  "memory": {
+    "enable": true,
+    "provider": "memos",
+    "endpoint": "http://127.0.0.1:5230",
+    "apiKey": "${MEMOS_API_KEY}"
+  },
+  "debug": {
+    "enabled": false,
+    "logLevel": "info",
+    "traceRequests": false,
+    "saveRequests": false
+  },
+  "hooks": []
+}

@@ -1,0 +1,44 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Env / secrets
+keys.env
+.env
+*.env.local
+
+# Streamlit
+.streamlit/
+$TMPDIR/streamlit/
+
+# Memory / runtime data
+user_memory.json
+ccr_memory.json
+
+# Backup
+Backup/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node (CCR)
+node_modules/
+package-lock.json
+
+# Logs
+logs/
+*.log

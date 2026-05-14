@@ -1,0 +1,21 @@
+# Core
+streamlit>=1.30.0
+openai>=1.0.0
+httpx>=0.25.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+requests>=2.31.0
+pyyaml>=6.0
+
+# Optional: File parsing
+PyPDF2>=3.0.0
+python-docx>=1.0.0
+pandas>=2.0.0
+
+# Optional: Voice
+edge-tts>=6.1.0
+pyttsx3>=2.90
+SpeechRecognition>=3.10.0
+
+# Optional: Utilities
+pyperclip>=1.8.0
