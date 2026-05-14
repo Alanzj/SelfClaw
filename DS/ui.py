@@ -275,56 +275,29 @@ def get_theme_css():
         line-height: 1.5 !important;
     }}
 
-    /* ========== 控制面板图标调大20%（49px） ========== */
-    section[data-testid="stSidebar"] .control-btn-style [data-testid="stButton"] > button,
-    section[data-testid="stSidebar"] .control-btn-style button,
-    section[data-testid="stSidebar"] .control-btn-style button p {{
+    /* ========== 控制面板图标（直接命中侧边栏 emoji 按钮） ========== */
+    section[data-testid="stSidebar"] [data-testid="stButton"] > button {{
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        width: 49px !important;
-        height: 49px !important;
         color: {TEXT} !important;
-        font-size: 44px !important;
-        padding: 2px !important;
-        margin: 0 !important;
         line-height: 1 !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
     }}
-    section[data-testid="stSidebar"] .control-btn-style [data-testid="stButton"] > button:hover {{
-        background: transparent !important;
-        border: none !important;
+    section[data-testid="stSidebar"] [data-testid="stButton"] > button:hover {{
         color: {TITLE} !important;
         filter: brightness(1.3) !important;
-        transform: none !important;
+        background: rgba(78,201,192,0.1) !important;
     }}
 
-    /* ========== 语音控制：自适应一行，字体缩小，垂直对齐 ========== */
-    section[data-testid="stSidebar"] .voice-control-wrapper [data-testid="stButton"] > button {{
+    /* ========== 语音控制：按钮垂直对齐（直接命中 stButton） ========== */
+    section[data-testid="stSidebar"] .voice-control-wrapper + div [data-testid="stButton"] > button,
+    section[data-testid="stSidebar"] [data-testid="stButton"] > button {{
         font-size: 11px !important;
         padding: 4px 6px !important;
         white-space: nowrap !important;
-        margin-top: 16px !important;
-        vertical-align: bottom !important;
-        display: inline-flex !important;
-        align-items: flex-end !important;
     }}
-    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox {{
-        margin-top: 16px !important;
-        display: inline-flex !important;
-        align-items: flex-end !important;
-    }}
-    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox label p,
-    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox label span {{
-        font-size: 10px !important;
-        color: {WARM} !important;
-        white-space: nowrap !important;
-    }}
-    section[data-testid="stSidebar"] .voice-control-wrapper .stCheckbox {{ margin: 0 !important; margin-top: 16px !important; }}
 
-    /* ========== 文件上传：青灰色，去除白框背景，全覆盖 ========== */
+    /* ========== 文件上传：青灰色 ========== */
     section[data-testid="stSidebar"] [data-testid="stFileUploader"],
     section[data-testid="stSidebar"] [data-testid="stFileUploader"] > div,
     section[data-testid="stSidebar"] [data-testid="stFileUploader"] > div > div,
@@ -333,27 +306,10 @@ def get_theme_css():
         border: 1px solid {BORDER} !important;
         border-radius: 6px !important;
     }}
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] span,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] button,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] p,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] small,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] label,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] div,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] a,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] * {{
-        font-size: 12px !important;
-        color: #5F9EA0 !important;
-    }}
     section[data-testid="stSidebar"] [data-testid="stFileUploader"] button {{
         background: transparent !important;
         border: 1px solid {BORDER} !important;
-        color: #5F9EA0 !important;
         border-radius: 4px !important;
-    }}
-    /* 拖拽区域虚线框内文字也改为青灰色 */
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"],
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"] * {{
-        color: #5F9EA0 !important;
     }}
 
     /* ========== 侧边栏全局内容字体（按钮除外） ========== */
@@ -367,6 +323,16 @@ def get_theme_css():
     section[data-testid="stSidebar"] button p,
     section[data-testid="stSidebar"] button {{
         color: {TITLE} !important;
+    }}
+    /* 文件上传区域颜色覆盖（双重限定提升权重） */
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] span,
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] div,
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] p,
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] label,
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] button,
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"] span,
+    section[data-testid="stSidebar"][data-testid="stSidebar"] [data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"] div {{
+        color: #5F9EA0 !important;
     }}
 
     /* ========== 右侧对话标题行 fixed 置顶（在 header 下方） ========== */
@@ -820,14 +786,6 @@ def get_theme_css():
         color: white !important;
     }}
 
-
-    /* ===== 文件上传区域青灰色字体 ===== */
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] *,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] span,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] button,
-    section[data-testid="stSidebar"] [data-testid="stFileUploader"] div {{
-        color: #5F9EA0 !important;
-    }}
 
     /* ========== 输入框白色底部区域彻底透明 ========== */
     .stBottom,
