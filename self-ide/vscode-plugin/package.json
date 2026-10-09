@@ -1,0 +1,66 @@
+{
+  "name": "self-ide",
+  "displayName": "Self-IDE",
+  "description": "Self-IDE：量化金融级私有 AI IDE — 多模型仲裁 / 零数据外泄 / 量化垂直路由",
+  "version": "1.0.0",
+  "publisher": "hermes-agent",
+  "engines": { "vscode": "^1.74.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "self-ide.initialize", "title": "Initialize Environment", "category": "Self-IDE" },
+      { "command": "self-ide.audit", "title": "Privacy Audit", "category": "Self-IDE" },
+      { "command": "self-ide.reset", "title": "Reset to Clean State", "category": "Self-IDE" },
+      { "command": "self-ide.checkHealth", "title": "Check Health", "category": "Self-IDE" },
+      { "command": "self-ide.connect", "title": "Connect to Hermes", "category": "Self-IDE" },
+      { "command": "self-ide.disconnect", "title": "Disconnect from Hermes", "category": "Self-IDE" },
+      { "command": "self-ide.showPanel", "title": "Show Hermes Panel", "category": "Self-IDE" },
+      { "command": "self-ide.showSymbols", "title": "Show Symbol Map", "category": "Self-IDE" }
+    ],
+    "configuration": {
+      "title": "Self-IDE",
+      "properties": {
+        "self-ide.hermesRoot": {
+          "type": "string", "default": "",
+          "description": "Agent 工作区根目录（hermesRoot）。留空 = 依次读取环境变量 HERMES_ROOT，再取 ~/hermes。隔离铁律：Self-IDE 产物只写此目录，绝不写隔离外置目录"
+        },
+        "self-ide.selfIdePort": {
+          "type": "number", "default": 19898,
+          "description": "Self-IDE 服务端端口（overlay，升级免疫）"
+        },
+        "self-ide.dashboardPort": {
+          "type": "number", "default": 9119,
+          "description": "Hermes Dashboard 端口（铁律不可变）"
+        },
+        "self-ide.gatewayPort": {
+          "type": "number", "default": 19899,
+          "description": "SelfClaw Gateway 端口（铁律不可变，71 模型池）"
+        },
+        "self-ide.proxyPort": {
+          "type": "string", "default": "7897",
+          "description": "CuteCloud 代理端口（仅用于外网；本地回环强制 bypass）"
+        },
+        "self-ide.routeViaGateway": {
+          "type": "boolean", "default": true,
+          "description": "Continue/Cline 是否统一走本地 Self-IDE 服务端（零外泄核心开关）"
+        },
+        "self-ide.contextLength": {
+          "type": "number", "default": 256000,
+          "description": "上下文窗口（默认安全基线 256K）"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.26.0"
+  }
+}

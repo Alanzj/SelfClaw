@@ -42,3 +42,11 @@ package-lock.json
 # Logs
 logs/
 *.log
+
+
+# Self-IDE runtime / build artifacts (never commit)
+out/
+*.vsix
+cost_meter.json
+subagent_state.json
+goal_state.json

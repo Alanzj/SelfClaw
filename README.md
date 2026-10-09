@@ -147,3 +147,14 @@ streamlit run DS/main.py --server.port 8502
 ## License
 
 MIT
+
+---
+
+## Self-IDE (local-first AI Agent IDE)
+
+This repo also ships **Self-IDE** under [`self-ide/`](self-ide/README.md): a
+local Python service (OpenAI-compatible proxy + Goal engine + Subagent
+orchestration + cost meter, default port 19898) with a thin VS Code extension
+as its shell. See [`self-ide/README.md`](self-ide/README.md) for the
+architecture diagram, `HERMES_ROOT` / `GATEWAY_PORT` configuration and the
+quickstart.
