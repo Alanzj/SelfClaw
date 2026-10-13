@@ -1,31 +1,12 @@
 # SelfClaw · 聚合智能系统
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 > 多模型聚合、自动降级、CCR 闭环智能体的 AI 对话系统
 
-## 系统架构
-
-```
-┌─────────────────────────────────────────────────────┐
-│                  Streamlit WebUI (8502)              │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │
-│  │ 对话引擎  │ │ 模型管理  │ │ 工具系统  │ │  CCR   │ │
-│  │chat_engine│ │model_mgr │ │  tools   │ │ ccr.py │ │
-│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └───┬────┘ │
-│       └─────────────┴────────────┴────────────┘      │
-│                        │                             │
-│              ┌─────────▼──────────┐                  │
-│              │   Gateway (19999)   │                  │
-│              │   gateway.py        │                  │
-│              └─────────┬──────────┘                  │
-│                        │                             │
-│  ┌─────────┬───────────┼───────────┬─────────┐      │
-│  ▼         ▼           ▼           ▼         ▼      │
-│ DeepSeek  SiliconFlow  NVIDIA    ZenMux    Mistral  │
-│ 智谱GLM   Kimi         MiMo      ...                │
-└─────────────────────────────────────────────────────┘
-```
-
-## 功能特性
+## ✨ 功能特性
 
 - **多模型聚合** — 支持 DeepSeek、NVIDIA、SiliconFlow、ZenMux、智谱、Kimi、MiMo、Mistral 等多家模型
 - **自动降级轮询** — 模型失败自动切换，临时错误两轮重试，永久故障 24h 黑名单，全网崩溃 3min 冷却
@@ -36,6 +17,7 @@
 - **模型管理** — 可视化增删改查、拖拽排序、属地判断
 - **多主题** — 深色 / 柔灰 / 浅色三种主题切换
 - **CCR HTTP 代理** — 兼容 Claude Code 请求格式，自动转发到 OpenClaw 网关
+- **Self-IDE** — 本地 AI Agent IDE 服务 + VS Code 扩展
 
 ## 目录结构
 
